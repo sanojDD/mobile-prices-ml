@@ -1,0 +1,128 @@
+Model,Price,Brand,Price_clean
+Samsung Mobiles List,Price in Nepal,Samsung,Price in Nepal
+Galaxy Z Fold 7,"Rs. 244,999 (12+256GB)",Samsung,244.99912256
+Galaxy Z Fold 6,"Rs. 164,999 (12+256GB)",Samsung,164.99912256
+Galaxy Z Fold 6,"Rs. 179,999 (12+512GB)",Samsung,179.99912512
+Galaxy Z Flip 7,"Rs. 154,999 (12+256GB)",Samsung,154.99912256
+Galaxy Z Flip 6,"Rs. 99,999 (12+256GB)",Samsung,99.99912256
+Galaxy S26 Ultra,"Rs. 292,999 (12GB+1TB)",Samsung,292.999121
+Galaxy S26 Ultra,"Rs. 242,999 (12/512GB)",Samsung,242.99912512
+Galaxy S26 Ultra,"Rs. 212,999 (12/256GB)",Samsung,212.99912256
+Galaxy S26 Plus,"Rs. 182,999 (12/256GB)",Samsung,182.99912256
+Galaxy S26,"Rs. 133,999 (12/256GB)",Samsung,133.99912256
+Galaxy S25 Ultra,"Rs. 234,999 (12GB+1TB)",Samsung,234.999121
+Galaxy S25 Ultra,"Rs. 199,999 (12/512GB)",Samsung,199.99912512
+Galaxy S25 Ultra,"Rs. 184,999 (12/256GB)",Samsung,184.99912256
+Galaxy S24 Ultra,"Rs. 159,999 (12+256GB)",Samsung,159.99912256
+Galaxy S25 Plus,"Rs. 141,999 (12+256GB)",Samsung,141.99912256
+Galaxy S25,"Rs. 104,999 (12+128GB)",Samsung,104.99912128
+Galaxy S25,"Rs. 114,999 (12+256GB)",Samsung,114.99912256
+Galaxy S25 FE 5G,"Rs. 99,999 107,999 (8+256GB)",Samsung,"Rs. 99,999 107,999 (8+256GB)"
+Galaxy A56 5G,"Rs. 65,999 71,999 (8+256GB)",Samsung,"Rs. 65,999 71,999 (8+256GB)"
+Galaxy A56 5G,"Rs. 70,999 77,999 (12+256GB)",Samsung,"Rs. 70,999 77,999 (12+256GB)"
+Galaxy M36 5G,"Rs. 36,999 41,999 (8+128GB)",Samsung,"Rs. 36,999 41,999 (8+128GB)"
+Galaxy M36 5G,"Rs. 41,999 47,999 (8+256GB)",Samsung,"Rs. 41,999 47,999 (8+256GB)"
+Galaxy A36 5G,"Rs. 48,999 53,999 (8+128GB)",Samsung,"Rs. 48,999 53,999 (8+128GB)"
+Galaxy A36 5G,"Rs. 54,999 59,999 (8+256GB)",Samsung,"Rs. 54,999 59,999 (8+256GB)"
+Galaxy A36 5G,"Rs. 59,999 65,999 (12+256GB)",Samsung,"Rs. 59,999 65,999 (12+256GB)"
+Galaxy A17 5G,"Rs. 28,999 36,999 (6+128GB)",Samsung,"Rs. 28,999 36,999 (6+128GB)"
+Galaxy A17 5G,"Rs. 30,999 36,999 (8+128GB)",Samsung,"Rs. 30,999 36,999 (8+128GB)"
+Galaxy A17 5G,"Rs. 34,999 44,999 (8+256GB)",Samsung,"Rs. 34,999 44,999 (8+256GB)"
+Galaxy M17 5G,"Rs. 27,999 32,999 (6+128GB)",Samsung,"Rs. 27,999 32,999 (6+128GB)"
+Galaxy A07,"Rs. 15,999 18,999 (4+64GB)",Samsung,"Rs. 15,999 18,999 (4+64GB)"
+Galaxy A07,"Rs. 17,999 22,499 (4+128GB)",Samsung,"Rs. 17,999 22,499 (4+128GB)"
+Galaxy A07,"Rs. 19,999 26,499 (6+128GB)",Samsung,"Rs. 19,999 26,499 (6+128GB)"
+12/256GB,12/512GB,Samsung,12512.0
+"NPR 212,999","NPR 242,999",Samsung,242999.0
+12/256GB,12/512GB,Samsung,12512.0
+"NPR 184,999","NPR 199,999",Samsung,199999.0
+6/128GB,"NPR 33,999",Samsung-galaxy-a17-price-nepal,33999.0
+8/128GB,"NPR 36,999",Samsung-galaxy-a17-price-nepal,36999.0
+8/256GB,"NPR 44,999",Samsung-galaxy-a17-price-nepal,44999.0
+4/64GB,"NPR 18,999",Samsung-galaxy-a07-price-nepal,18999.0
+4/128GB,"NPR 22,499",Samsung-galaxy-a07-price-nepal,22499.0
+6/128GB,"NPR 26,499",Samsung-galaxy-a07-price-nepal,26499.0
+Samsung Galaxy A36 5G,Old Price,Samsung-galaxy-a36-price-nepal,Old Price
+8/128GB,"NPR 48,999",Samsung-galaxy-a36-price-nepal,48999.0
+8/256GB,"NPR 54,999",Samsung-galaxy-a36-price-nepal,54999.0
+12/256GB,"NPR 59,999",Samsung-galaxy-a36-price-nepal,59999.0
+Samsung Galaxy A56 5G,Old Price,Samsung-galaxy-a56-price-nepal,Old Price
+8GB + 256GB,"NPR 65,999",Samsung-galaxy-a56-price-nepal,65999.0
+12GB + 256GB,"NPR 70,999",Samsung-galaxy-a56-price-nepal,70999.0
+Samsung Galaxy S25,Price in Nepal (Official),Samsung-galaxy-s25-price-nepal,Price in Nepal (Official)
+12/128GB,"NPR 104,999",Samsung-galaxy-s25-price-nepal,104999.0
+12/256GB,"NPR 114,999",Samsung-galaxy-s25-price-nepal,114999.0
+Samsung Galaxy S25+,Price in Nepal (Official),Samsung-galaxy-s25-plus,Price in Nepal (Official)
+12/256GB,"NPR 141,999",Samsung-galaxy-s25-plus,141999.0
+Samsung Galaxy S25 FE,Old Price,Samsung-galaxy-s25-fe-price-nepal-2,Old Price
+8+256GB,"NPR 99,999",Samsung-galaxy-s25-fe-price-nepal-2,99999.0
+Samsung Galaxy M36,Old Price,Samsung-galaxy-m36,Old Price
+8/128GB,"NPR 36,999",Samsung-galaxy-m36,36999.0
+8/256GB,"NPR 41,999",Samsung-galaxy-m36,41999.0
+Samsung Galaxy A56 5G,Old Price,Samsung-galaxy-m36,Old Price
+8GB + 256GB,"NPR 65,999",Samsung-galaxy-m36,65999.0
+12GB + 256GB,"NPR 70,999",Samsung-galaxy-m36,70999.0
+Prebook Here,"NPR 128,999",Samsung-galaxy-s26,128999.0
+Prebook Here,"NPR 177,999",Samsung-galaxy-s26-plus,177999.0
+12GB + 256GB,"NPR 202,999",Samsung-galaxy-s26-ultra,202999.0
+12GB + 512GB,"NPR 227,999",Samsung-galaxy-s26-ultra,227999.0
+16GB + 1TB,"NPR 278,999",Samsung-galaxy-s26-ultra,278999.0
+Galaxy S25 Ultra,Price in Nepal,Samsung-galaxy-s25-ultra-price-nepal,Price in Nepal
+12/256GB,"NPR 184,999",Samsung-galaxy-s25-ultra-price-nepal,184999.0
+12/512GB,"NPR 199,999",Samsung-galaxy-s25-ultra-price-nepal,199999.0
+12GB/1TB,"NPR 234,999",Samsung-galaxy-s25-ultra-price-nepal,234999.0
+Samsung Galaxy Z Fold 6,Price in Nepal (Official),Samsung-galaxy-z-flip-6-price-nepal,Price in Nepal (Official)
+12/256GB,"NPR 139,999 99,999",Samsung-galaxy-z-flip-6-price-nepal,13999999999.0
+Redmi A5,"NPR 10,999 12,499 (3+64GB)",Xiaomi-mobiles,1099912499364.0
+Redmi A5,"NPR 11,999 13,499 (4+128GB)",Xiaomi-mobiles,11999134994128.0
+Redmi 15C,"NPR 14,999, 16,999 (4+128GB)",Xiaomi-mobiles,14999169994128.0
+Redmi 15C,"NPR 16,999, 18,999 (6+128GB)",Xiaomi-mobiles,16999189996128.0
+Redmi 15C,"NPR 18,999, 21,999 (8+256GB)",Xiaomi-mobiles,18999219998256.0
+Redmi 15,"NPR 18,999, 21,999 (6+128GB)",Xiaomi-mobiles,18999219996128.0
+Redmi 15,"NPR 21,999, 24,999 (8+256GB)",Xiaomi-mobiles,21999249998256.0
+Redmi Note 15 4G,"NPR 29,999 (6+128GB)",Xiaomi-mobiles,299996128.0
+Redmi Note 15 4G,"NPR 35,999 (8+256GB)",Xiaomi-mobiles,359998256.0
+Redmi Note 15 5G,"NPR 39,999 (8+256GB)",Xiaomi-mobiles,399998256.0
+Redmi Note 15 5G,"NPR 46,999 (12+512GB)",Xiaomi-mobiles,4699912512.0
+Redmi Note 15 Pro,"NPR 49,999 (8+256GB)",Xiaomi-mobiles,499998256.0
+Redmi Note 15 Pro,"NPR 56,999 (12+512GB)",Xiaomi-mobiles,5699912512.0
+Redmi Note 15 Pro+ 5G,"NPR 59,999 (8+256GB)",Xiaomi-mobiles,599998256.0
+Redmi Note 15 Pro+ 5G,"NPR 66,999 (12+512GB)",Xiaomi-mobiles,6699912512.0
+Xiaomi 14T,"NPR 59,999 (12+512GB)",Xiaomi-mobiles,5999912512.0
+Xiaomi 15 Ultra,"NPR 149,999 (16+512GB)",Xiaomi-mobiles,14999916512.0
+12/256GB,"NPR 244,999",Samsung-galaxy-z-fold-7-price-nepal,244999.0
+12/512GB,"NPR 259,999",Samsung-galaxy-z-fold-7-price-nepal,259999.0
+Apple iPhone models,Price in Nepal (Updated),Apple,Price in Nepal (Updated)
+iPhone 17 Pro Max,"NPR 239,999 (256GB)",Apple,239999256.0
+iPhone 17 Pro Max,"NPR 279,999 (512GB)",Apple,279999512.0
+iPhone 17 Pro Max,"NPR 319,999 (1TB)",Apple,3199991.0
+iPhone 17 Pro Max,"NPR 397,999 (2TB)",Apple,3979992.0
+iPhone 17 Pro,"NPR 220,999 (256GB)",Apple,220999256.0
+iPhone 17 Pro,"NPR 251,999 (512GB)",Apple,251999512.0
+iPhone 17 Pro,"NPR 291,999 (1TB)",Apple,2919991.0
+iPhone Air,"NPR 200,999 178,999 (256GB)",Apple,200999178999256.0
+iPhone Air,"NPR 240,499 218,999 (512GB)",Apple,240499218999512.0
+iPhone Air,"NPR 279,999 257,999 (1TB)",Apple,2799992579991.0
+iPhone 17,"NPR 157,299 161,599 (256GB)",Apple,157299161599256.0
+iPhone 17,"NPR 197,999 200,899 (512GB)",Apple,197999200899512.0
+iPhone 16,"NPR 135,299 128,099 (128GB)",Apple,135299128099128.0
+iPhone 16e,"NPR 106,399 98,799 (128GB)",Apple,10639998799128.0
+iPhone 15,"NPR 109,899 (128GB)",Apple,109899128.0
+iPhone 14,"NPR 85,799, 90,799 (128GB)",Apple,8579990799128.0
+iPhone 13,"NPR 77,399 80,399 (128GB)",Apple,7739980399128.0
+256GB,512GB,Apple,512.0
+"NPR 239,999","NPR 279,999",Apple,279999.0
+256GB,512GB,Apple,512.0
+"NPR 220,999","NPR 259,999",Apple,259999.0
+256GB,512GB,Apple,512.0
+"NPR 200,999, 178,999","NPR 240,999, 128,999",Apple,240999128999.0
+256GB,512GB,Apple,512.0
+"NPR 157,299, 161,599","NPR 197,999, 200,899",Apple,197999200899.0
+Samsung Galaxy Z Fold 6,Price in Nepal (Official),Samsung-galaxy-z-fold-6-price-nepal,Price in Nepal (Official)
+12/256GB,"NPR 214,999",Samsung-galaxy-z-fold-6-price-nepal,214999.0
+12/512GB,"NPR 229,999",Samsung-galaxy-z-fold-6-price-nepal,229999.0
+Samsung Galaxy Z Fold 6,Price in Nepal (Official),Samsung-galaxy-z-fold-6-price-nepal,Price in Nepal (Official)
+12/256GB,"NPR 139,999 99,999",Samsung-galaxy-z-fold-6-price-nepal,13999999999.0
+12/512GB,"NPR 64,999",Xiaomi-15t-price-nepal,64999.0
+Smartphone,Price in Nepal,Xiaomi-15-ultra,Price in Nepal
+Xiaomi 15 Ultra (16/512GB),"NPR 149,999",Xiaomi-15-ultra,149999.0
