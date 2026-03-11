@@ -1,0 +1,22 @@
+python>=3.8
+numpy>=1.24
+pandas>=2.0
+scikit-learn>=1.2
+joblib>=1.2
+matplotlib>=3.7
+seaborn>=0.12
+scipy>=1.10
+
+# Optional / useful for extended workflows
+# For faster gradient-boosted models (if you later switch from RandomForest)
+xgboost>=1.7  # optional
+lightgbm>=3.3  # optional
+
+# If you use the scraper / JS rendering scripts from earlier messages
+requests>=2.31
+beautifulsoup4>=4.12
+lxml>=4.9
+playwright>=1.36  # optional, only if you use Playwright; run `playwright install` after installing
+
+# Jupyter / notebook support (optional)
+jupyterlab>=4.0
