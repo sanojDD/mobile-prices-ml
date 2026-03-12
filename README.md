@@ -1,119 +1,228 @@
-# Mobile Price Prediction Project (Nepal Market)
+# 📱 Mobile Price Prediction — ML Pipeline
 
-## Project Overview
-This project aims to extract, clean, and analyze mobile phone price data from GadgetByte Nepal (a prominent Nepalese tech news website) for various brands, including Samsung, Apple, and Xiaomi. The extracted data is then used to train a machine learning model to predict mobile phone prices based on brand, RAM, storage, and model category. The final output includes a structured CSV dataset and a trained model for price prediction.
+> Predict mobile phone prices in Nepal (NPR) from specs using an end-to-end machine learning pipeline.
 
-## Project Structure and Workflow
+---
 
-The project follows these main steps:
+## 📋 Project Overview
 
-1.  **Data Extraction**: Scrape mobile phone model and price information from the specified website.
-2.  **Data Cleaning and Preprocessing**: Parse raw text data to extract numerical prices, RAM, storage, and clean model/brand names.
-3.  **Exploratory Data Analysis (EDA)**: Visualize price distributions and brand-wise comparisons to understand the data.
-4.  **Model Training**: Develop a machine learning model (RandomForestRegressor) to predict mobile prices.
-5.  **Model Evaluation**: Assess the model's performance using metrics like RMSE, MAE, and R2.
-6.  **Prediction**: Demonstrate how to use the trained model for new predictions.
+This project builds a regression model to predict smartphone prices in Nepalese Rupees (NPR) using device specifications parsed from a real-world, messy scraping dataset (`all_mobile_data5.csv`). The pipeline covers the full ML lifecycle: data parsing, feature engineering, EDA, model training, hyperparameter tuning, and inference on new data.
 
-## Installation
+---
 
-To run this project, you'll need Python 3.x and the following libraries:
+## 🗂️ Project Structure
 
-```bash
-pip install requests beautifulsoup4 pandas scikit-learn matplotlib seaborn joblib
+```
+mobile-price-prediction/
+│
+├── mobile_price_prediction.py   # Main pipeline (all steps)
+├── requirements.txt             # Python dependencies
+├── mobile_price_model.pkl       # Saved best model bundle
+├── eda_dashboard.png            # EDA visualisation (12 plots)
+├── model_evaluation.png         # Model evaluation charts
+└── README.md                    # This file
 ```
 
-## Data Extraction
+---
 
-Mobile phone data is extracted from `https://www.gadgetbytenepal.com/category/mobile-price-in-nepal/`. The scraping process identifies individual brand listing pages for Samsung, Apple, and Xiaomi, then extracts model names and price strings from HTML tables.
+## 📦 Dataset
 
-### Raw Data Example (before cleaning):
+| Field        | Description                                              |
+|--------------|----------------------------------------------------------|
+| `Model`      | Phone model name (e.g., Galaxy S25 Ultra)                |
+| `Price`      | Raw price string (e.g., "Rs. 184,999 (12/256GB)")        |
+| `Brand`      | Brand name or brand-slug string                          |
+| `Price_clean`| Partially cleaned price (noisy, not directly usable)     |
 
-| Brand   | Model               | Price                  |
-| :------ | :------------------ | :--------------------- |
-| Samsung | Galaxy Z Fold 7     | Rs. 244,999 (12+256GB) |
-| Apple   | iPhone 17 Pro Max   | Rs. 279,999 (12+512GB) |
-| Xiaomi  | Redmi Note 15 Pro+  | NPR 66,999 (8+128GB)   |
+**Raw records:** 127 rows — heavily messy with header rows, duplicate entries, malformed prices.  
+**Clean records after parsing:** 109 usable rows.
 
-## Data Cleaning and Feature Engineering
+---
 
-The raw price strings are cleaned using regular expressions to extract `Price_Min`, `Price_Max`, `ram_gb`, `storage_gb`, and a `Notes` field for variants. Brand names are normalized, and a `model_cat` feature is created to group similar models.
+## ⚙️ Pipeline Steps
 
-### Cleaned Data Example (`all_mobile_prices_nepal.csv`):
+### 1️⃣ Data Parsing & Preprocessing
 
-| Brand   | Model             | Price_Min | Price_Max | Notes    |
-| :------ | :---------------- | :-------- | :-------- | :------- |
-| Samsung | Galaxy Z Fold 7   | 244999    | 244999    | 12+256GB |
-| Apple   | iPhone 17 Pro Max | 279999    | 279999    | 12+512GB |
-| Xiaomi  | Redmi Note 15 Pro+| 66999     | 66999     | 8+128GB  |
+The raw dataset is extremely messy — prices are embedded in strings like `"Rs. 184,999 (12/256GB)"` and `"NPR 199,999"`, RAM/Storage specs are inside price strings, and brand names are sometimes URL slugs.
 
-## Exploratory Data Analysis (EDA)
+Custom regex-based parsers handle:
+- **Price extraction** — extracts 4–7 digit numbers within the realistic range (5,000–500,000 NPR)
+- **RAM extraction** — handles `8GB`, `12/256`, `12+256`, `8GB+256GB` patterns
+- **Storage extraction** — handles TB→GB conversion, paired patterns, standalone GB values
+- **Brand normalization** — maps slugs like `samsung-galaxy-a36-price-nepal` → `Samsung`
 
-Visualizations are generated to understand price distribution and compare prices across different brands. Key plots include:
+Missing RAM/Storage values are imputed with the **median** of available values.
 
--   `eda_outputs/eda_price_distribution.png`: Histogram of mobile prices.
--   `eda_outputs/eda_price_by_brand.png`: Box plot of prices by brand (log scale).
+---
 
-## Machine Learning Model
+### 2️⃣ Feature Engineering
 
-A `RandomForestRegressor` model is trained using a `Pipeline` that includes preprocessing steps for numerical and categorical features. `RandomizedSearchCV` is used for hyperparameter tuning.
+| Feature          | Description                                      |
+|-----------------|--------------------------------------------------|
+| `RAM_GB`         | RAM in gigabytes                                |
+| `Storage_GB`     | Internal storage in gigabytes                   |
+| `Is_5G`          | Binary flag: device supports 5G                 |
+| `Is_Ultra`       | Binary flag: model name contains "Ultra"        |
+| `Is_Pro`         | Binary flag: model name contains "Pro"          |
+| `Is_Foldable`    | Binary flag: Fold or Flip form factor           |
+| `RAM_x_Storage`  | Interaction term: RAM × Storage                 |
+| `Log_Storage`    | log(1 + Storage) — captures diminishing returns |
+| `Premium_Score`  | Weighted sum: Ultra×3 + Pro×2 + Foldable×4 + 5G×1 |
+| `Brand_Encoded`  | Ordinal: Apple=3, Samsung=2, Xiaomi=1, Other=0 |
 
-### Features Used:
+---
 
--   `brand_clean`: Normalized brand name (Categorical)
--   `ram_gb`: RAM in GB (Numerical)
--   `storage_gb`: Storage in GB (Numerical)
--   `model_cat`: Categorized model name (Categorical - top N models, rest as 'other')
+### 3️⃣ EDA (Exploratory Data Analysis)
 
-### Model Performance (on test set):
+The EDA dashboard (`eda_dashboard.png`) includes 12 plots:
 
--   **RMSE**: 53132.59 NPR
--   **MAE**: 38263.61 NPR
--   **R2 Score**: 0.6134
+- Price distribution histogram
+- Average price by brand (bar chart)
+- Brand share (pie chart)
+- Price distribution by tier (box plots)
+- RAM vs Price scatter (by brand)
+- Storage vs Price scatter (by brand)
+- Feature presence vs absence price comparison
+- Correlation heatmap
+- 5G vs Non-5G price comparison
+- Count by price tier
+- RAM distribution
+- Storage distribution
 
-### Top Feature Importances:
+**Price Tiers:**
+| Tier        | Price Range (NPR)        |
+|-------------|--------------------------|
+| Budget      | < 20,000                 |
+| Mid-Range   | 20,000 – 59,999          |
+| Upper-Mid   | 60,000 – 119,999         |
+| Flagship    | ≥ 120,000                |
 
--   `storage_gb`: 0.555
--   `brand_clean_Apple`: 0.132
--   `brand_clean_Xiaomi`: 0.063
--   `model_cat_iPhone 17 Pro Max`: 0.049
--   `model_cat_Galaxy S26 Ultra`: 0.031
+---
 
-## Files Generated
+### 4️⃣ Model Training
 
--   `mobile_prices_nepal_2026.csv`: Cleaned data for Samsung, Apple, and Xiaomi (first iteration).
--   `all_mobile_prices_nepal.csv` (or `all_mobile_data5.csv`): Comprehensive cleaned dataset for all scraped brands.
--   `eda_outputs/eda_price_distribution.png`: Price distribution plot.
--   `eda_outputs/eda_price_by_brand.png`: Price by brand plot.
--   `mobile_price_model.joblib`: The trained machine learning pipeline.
--   `model_metadata.json`: Metadata about the trained model and training process.
--   `feature_importances.csv`: CSV file listing feature importances from the RandomForest model.
--   `predictions_random.csv`: Sample predictions on synthetically generated data.
--   `predictions_sample.csv`: Sample predictions on data sampled from the `all_mobile_data5.csv`.
+Four models were trained and evaluated with 5-fold cross-validation:
 
-## Usage (Prediction Example)
+| Model                | Test R²  | MAE (NPR)  | RMSE (NPR) | CV R²  |
+|---------------------|----------|------------|------------|--------|
+| Ridge Regression     | 0.6776   | 41,141     | 48,503     | 0.7409 |
+| Decision Tree        | 0.5677   | 38,241     | 56,167     | 0.7428 |
+| Random Forest        | 0.6913   | 33,623     | 47,464     | 0.7703 |
+| **Gradient Boosting**| **0.7487** | **31,371** | **42,819** | **0.7860** |
 
-To make a prediction using the trained model, load the `mobile_price_model.joblib` file and provide new data in the same format as the training features.
+---
+
+### 5️⃣ Hyperparameter Tuning
+
+`GridSearchCV` was applied to the Random Forest model across:
 
 ```python
-import pandas as pd
-import joblib
-
-# Load the trained model
-model = joblib.load('mobile_price_model.joblib')
-
-# Prepare new data for prediction
-new_data = {
-    'brand_clean': ['Samsung'],
-    'ram_gb': [6],
-    'storage_gb': [1024],
-    'model_cat': ['model_5'] # Or a more specific model if available in the model_cat feature set
+param_grid = {
+    'n_estimators':      [50, 100, 200],
+    'max_depth':         [None, 5, 10, 15],
+    'min_samples_split': [2, 5],
+    'min_samples_leaf':  [1, 2],
+    'max_features':      ['sqrt', 'log2'],
 }
-X_new = pd.DataFrame(new_data)
-
-# Make prediction
-predicted_price = model.predict(X_new)[0]
-
-print(f"Predicted Price for Samsung (6GB/1024GB, model_5): Rs. {predicted_price:,.2f} NPR")
 ```
 
-This will output a predicted price, for example: `Predicted Price for Samsung (6GB/1024GB, model_5): Rs. 258,095.97 NPR`
+Best params: `max_depth=None, max_features='sqrt', min_samples_leaf=1, min_samples_split=5, n_estimators=50`  
+Best CV R²: **0.7690**
+
+---
+
+### 6️⃣ Best Model
+
+🏆 **Gradient Boosting Regressor** was selected as the best model.
+
+| Metric   | Value         |
+|----------|---------------|
+| R²       | 0.7487        |
+| MAE      | NPR 31,371    |
+| RMSE     | NPR 42,819    |
+| CV R²    | 0.7860        |
+
+---
+
+### 7️⃣ Inference on New Data
+
+The saved model bundle (`mobile_price_model.pkl`) includes the model, scaler, feature list, and brand encoder. Example predictions:
+
+| Phone Specs                              | Predicted Price | Tier       |
+|------------------------------------------|-----------------|------------|
+| Budget Android (4GB/64GB)                | NPR 12,218      | Budget     |
+| Mid-Range Samsung 5G (8GB/256GB)         | NPR 56,312      | Mid-Range  |
+| Samsung Ultra (12GB/512GB, 5G, Ultra)    | NPR 163,363     | Flagship   |
+| Apple iPhone Pro Max (12GB/1TB)          | NPR 270,262     | Flagship   |
+| Samsung Z Fold (12GB/512GB, Foldable)    | NPR 128,310     | Flagship   |
+
+---
+
+## 🚀 Quick Start
+
+### 1. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Run the full pipeline
+
+```bash
+python3 mobile_price_prediction.py
+```
+
+### 3. Load the saved model for inference
+
+```python
+import joblib
+import pandas as pd
+import numpy as np
+
+bundle = joblib.load('mobile_price_model.pkl')
+model  = bundle['model']
+cols   = bundle['feature_cols']
+
+# Example: Apple iPhone Pro, 8GB RAM, 256GB, 5G, Pro
+sample = pd.DataFrame([{
+    'RAM_GB': 8, 'Storage_GB': 256,
+    'Is_5G': 1, 'Is_Ultra': 0, 'Is_Pro': 1, 'Is_Foldable': 0,
+    'RAM_x_Storage': 8 * 256, 'Log_Storage': np.log1p(256),
+    'Premium_Score': 0*3 + 1*2 + 0*4 + 1*1,
+    'Brand_Encoded': 3,   # Apple=3
+}])[cols]
+
+predicted_price = model.predict(sample)[0]
+print(f"Predicted Price: NPR {predicted_price:,.0f}")
+```
+
+---
+
+## 📊 Key Insights
+
+- **Brand** is the strongest price driver — Apple phones command a premium across all storage tiers
+- **Storage** is more predictive than RAM alone; the interaction term `RAM × Storage` improves accuracy
+- **Foldable** devices carry the highest premium feature score
+- **5G** alone has a moderate effect; combined with Ultra/Pro it pushes prices significantly higher
+- The dataset is small (109 records), which limits model generalisation — more data would improve R²
+
+---
+
+## 🛠️ Requirements
+
+```
+pandas>=2.0.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+joblib>=1.3.0
+```
+
+---
+
+## 📝 Notes
+
+- Dataset source: Nepal mobile price listings (scraped), prices in NPR
+- The raw data contains significant noise — header rows mixed into data, malformed price strings, URL slugs as brand names. All cleaned via custom regex parsers.
+- Model performance is limited by dataset size; with more diverse data, tree-ensemble models would perform significantly better.
