@@ -1,4 +1,4 @@
-# 📱 Mobile Price Prediction — ML Pipeline
+# 📱 Mobile Price Prediction — ML Pipeline (https://huggingface.co/spaces/Sanoj111/mobile_prices)
 
 > Predict mobile phone prices in Nepal (NPR) from specs using an end-to-end machine learning pipeline.
 
